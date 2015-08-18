@@ -1,4 +1,4 @@
-package pso
+package swarm
 
 import (
 	"math/rand"
@@ -10,8 +10,6 @@ type Particle struct {
 	position     []float64
 	velocity     []float64
 }
-
-type efficiencyFunction func([]float64) float64
 
 func random(min, max float64) float64 {
 	return rand.Float64()*(max-min) + min
