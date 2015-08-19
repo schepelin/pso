@@ -10,12 +10,14 @@ func parabola(args ...float64) float64 {
 }
 
 func main() {
-	extremum, coords := swarm.Run(
-		parabola,
-		1,
-		5,
-		-5.0,
-		4.0,
-	)
+	options := swarm.AlgorithmOptions{
+		Func:            parabola,
+		IterationsCount: 20,
+		VariablesLength: 1,
+		SwarmSize:       5,
+		MinValue:        -5.0,
+		MaxValue:        4.0,
+	}
+	extremum, coords := swarm.Run(options)
 	fmt.Println(extremum, coords)
 }
