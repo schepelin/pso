@@ -1,7 +1,6 @@
 package swarm
 
 import (
-	"fmt"
 	"math"
 	"math/rand"
 	"time"
@@ -35,15 +34,11 @@ func Run(opts AlgorithmOptions) (float64, []float64) {
 		particlePosition := swarm[i].position
 		funcValue := opts.Func(particlePosition...)
 
-		fmt.Println(particlePosition, funcValue)
-
 		if funcValue < extremum {
 			extremum = funcValue
 			copy(swarmBest, particlePosition)
 		}
 	}
-	fmt.Println(swarmBest)
-	fmt.Println("-------------")
 	for i := 0; i < opts.IterationsCount-1; i++ {
 
 		for j := 0; j < len(swarm); j++ {
@@ -51,15 +46,11 @@ func Run(opts AlgorithmOptions) (float64, []float64) {
 			particlePosition := swarm[j].position
 			funcValue := opts.Func(particlePosition...)
 
-			fmt.Println(particlePosition, funcValue)
-
 			if funcValue < extremum {
 				extremum = funcValue
 				copy(swarmBest, particlePosition)
 			}
 		}
-		fmt.Println(swarmBest)
-		fmt.Println("-------------")
 	}
 
 	return extremum, swarmBest
